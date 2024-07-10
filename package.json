@@ -1,11 +1,57 @@
 {
-  "name": "my-nodejs-project",
-  "version": "1.0.0",
+  "name": "versioning",
+  "version": "1.2.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "release-it"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranav603081/versioning.git"
+  },
+  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pranav603081/versioning.git/issues"
+  },
+  "homepage": "https://github.com/pranav603081/versioning.git#readme",
+  "dependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@release-it/conventional-changelog": "^5.0.0",
+    "husky": "^8.0.1",
+    "release-it": "^15.1.1"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            },
+            {}
+          ]
+        }
+      }
+    }
+  }
 }
